@@ -1,11 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31825.309
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRental.Api", "VacationRental.Api\VacationRental.Api.csproj", "{478C6CBF-6F84-4604-8E31-DEDFDFE10DBC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRental.Api.Tests", "VacationRental.Api.Tests\VacationRental.Api.Tests.csproj", "{57FE6E13-7144-459F-BCA8-431087D3DAEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{9C84F609-48F4-4B2E-BB19-67764708A52E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryStorage", "MemoryStorage\MemoryStorage.csproj", "{8161FEC5-FBAA-4830-A6BE-4F669BC5A26C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingRentals", "BookingRentals\BookingRentals.csproj", "{C8AFB143-BDE5-4B1D-88FA-0FB37A484592}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRental", "VacationRental\VacationRental.csproj", "{F62427CA-4B9D-448E-8058-7872AA86ED5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryStorage.Tests", "MemoryStorage.Tests\MemoryStorage.Tests.csproj", "{F9428034-AEAB-4460-B46C-6B097BC9331A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRantal.Tests", "VacationRantal.Tests\VacationRantal.Tests.csproj", "{68F4EB0A-56A5-4F76-9077-32634C5864D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +33,30 @@ Global
 		{57FE6E13-7144-459F-BCA8-431087D3DAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57FE6E13-7144-459F-BCA8-431087D3DAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57FE6E13-7144-459F-BCA8-431087D3DAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C84F609-48F4-4B2E-BB19-67764708A52E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C84F609-48F4-4B2E-BB19-67764708A52E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C84F609-48F4-4B2E-BB19-67764708A52E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C84F609-48F4-4B2E-BB19-67764708A52E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8161FEC5-FBAA-4830-A6BE-4F669BC5A26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8161FEC5-FBAA-4830-A6BE-4F669BC5A26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8161FEC5-FBAA-4830-A6BE-4F669BC5A26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8161FEC5-FBAA-4830-A6BE-4F669BC5A26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8AFB143-BDE5-4B1D-88FA-0FB37A484592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8AFB143-BDE5-4B1D-88FA-0FB37A484592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8AFB143-BDE5-4B1D-88FA-0FB37A484592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8AFB143-BDE5-4B1D-88FA-0FB37A484592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62427CA-4B9D-448E-8058-7872AA86ED5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62427CA-4B9D-448E-8058-7872AA86ED5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62427CA-4B9D-448E-8058-7872AA86ED5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62427CA-4B9D-448E-8058-7872AA86ED5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9428034-AEAB-4460-B46C-6B097BC9331A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9428034-AEAB-4460-B46C-6B097BC9331A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9428034-AEAB-4460-B46C-6B097BC9331A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9428034-AEAB-4460-B46C-6B097BC9331A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68F4EB0A-56A5-4F76-9077-32634C5864D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F4EB0A-56A5-4F76-9077-32634C5864D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F4EB0A-56A5-4F76-9077-32634C5864D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F4EB0A-56A5-4F76-9077-32634C5864D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
