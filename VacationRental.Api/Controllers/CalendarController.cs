@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using BookingRentals.Calendar;
 using Microsoft.AspNetCore.Mvc;
 using VacationRental.Api.Models;
 
@@ -9,51 +11,36 @@ namespace VacationRental.Api.Controllers
     [ApiController]
     public class CalendarController : ControllerBase
     {
-        private readonly IDictionary<int, RentalViewModel> _rentals;
-        private readonly IDictionary<int, BookingViewModel> _bookings;
-
+        protected readonly ICalendar _calendarService;
+        protected readonly BookingRentals.Rental.IRental _rentalService;
         public CalendarController(
-            IDictionary<int, RentalViewModel> rentals,
-            IDictionary<int, BookingViewModel> bookings)
+            ICalendar calendarService,
+            BookingRentals.Rental.IRental rentalService)
         {
-            _rentals = rentals;
-            _bookings = bookings;
+            _calendarService = calendarService;
+            _rentalService = rentalService;
         }
 
         [HttpGet]
         public CalendarViewModel Get(int rentalId, DateTime start, int nights)
         {
-            if (nights < 0)
-                throw new ApplicationException("Nights must be positive");
-            if (!_rentals.ContainsKey(rentalId))
-                throw new ApplicationException("Rental not found");
-
-            var result = new CalendarViewModel 
+            try
             {
-                RentalId = rentalId,
-                Dates = new List<CalendarDateViewModel>() 
-            };
-            for (var i = 0; i < nights; i++)
-            {
-                var date = new CalendarDateViewModel
-                {
-                    Date = start.Date.AddDays(i),
-                    Bookings = new List<CalendarBookingViewModel>()
+                var rentalItem = _rentalService.GetRentalById(rentalId);
+                var calendarItems = _calendarService.GetCalendar(rentalItem, start, nights)
+                    .GroupBy(x => x.Date, (key,grp) => new { Date = key, Bookings = grp.Where(x => x.BookingId != null).Select(x => new CalendarBookingViewModel() {Id = x.BookingId.Value }) });
+                return new CalendarViewModel(){
+                    RentalId = rentalId,
+                    Dates = calendarItems.Select(x => new CalendarDateViewModel(){
+                        Date = x.Date,
+                        Bookings = x.Bookings.ToList()
+                    }).OrderBy(x => x.Date).ToList()
                 };
-
-                foreach (var booking in _bookings.Values)
-                {
-                    if (booking.RentalId == rentalId
-                        && booking.Start <= date.Date && booking.Start.AddDays(booking.Nights) > date.Date)
-                    {
-                        date.Bookings.Add(new CalendarBookingViewModel { Id = booking.Id });
-                    }
-                }
-
-                result.Dates.Add(date);
+                
+            }catch(Exception ex)
+            {
+                throw new ApplicationException(ex.Message);
             }
-
-            return result;
         }
     }
 }
